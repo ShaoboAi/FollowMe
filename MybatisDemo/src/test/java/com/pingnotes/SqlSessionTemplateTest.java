@@ -11,7 +11,6 @@ public class SqlSessionTemplateTest extends BaseTest {
 
     @Test
     public void t(){
-
         SqlSessionTemplate sqlSession = ctx.getBean("sqlSessionTemplate", SqlSessionTemplate.class);
         Users u = sqlSession.selectOne("com.pingnotes.mapper.UsersMapper.selectByPrimaryKey", 23l);
         System.out.println(u.getEmail());
