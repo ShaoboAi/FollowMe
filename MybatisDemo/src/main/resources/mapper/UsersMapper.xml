@@ -1,0 +1,1116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pingnotes.mapper.UsersMapper">
+  <resultMap id="BaseResultMap" type="com.pingnotes.pojo.Users">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="encrypted_rush_password" jdbcType="VARCHAR" property="encryptedRushPassword" />
+    <result column="encrypted_mail_refresh_token" jdbcType="VARCHAR" property="encryptedMailRefreshToken" />
+    <result column="encrypt_mail_access_token" jdbcType="VARCHAR" property="encryptMailAccessToken" />
+    <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+    <result column="company_id" jdbcType="INTEGER" property="companyId" />
+    <result column="organization_id" jdbcType="INTEGER" property="organizationId" />
+    <result column="birthday" jdbcType="DATE" property="birthday" />
+    <result column="gender" jdbcType="VARCHAR" property="gender" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+    <result column="salt" jdbcType="VARCHAR" property="salt" />
+    <result column="avatar_url" jdbcType="VARCHAR" property="avatarUrl" />
+    <result column="avatar_thumbnail_url" jdbcType="VARCHAR" property="avatarThumbnailUrl" />
+    <result column="signature" jdbcType="VARCHAR" property="signature" />
+    <result column="is_register" jdbcType="BIT" property="isRegister" />
+    <result column="is_delete" jdbcType="BIT" property="isDelete" />
+    <result column="roles" jdbcType="VARCHAR" property="roles" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="interests" jdbcType="VARCHAR" property="interests" />
+    <result column="company" jdbcType="VARCHAR" property="company" />
+    <result column="domain_company" jdbcType="VARCHAR" property="domainCompany" />
+    <result column="entry" jdbcType="INTEGER" property="entry" />
+    <result column="is_freeze" jdbcType="BIT" property="isFreeze" />
+    <result column="is_active" jdbcType="BIT" property="isActive" />
+    <result column="phone_number" jdbcType="VARCHAR" property="phoneNumber" />
+  </resultMap>
+  <!--<sql id="Example_Where_Clause">-->
+    <!--<where>-->
+      <!--<foreach collection="oredCriteria" item="criteria" separator="or">-->
+        <!--<if test="criteria.valid">-->
+          <!--<trim prefix="(" prefixOverrides="and" suffix=")">-->
+            <!--<foreach collection="criteria.criteria" item="criterion">-->
+              <!--<choose>-->
+                <!--<when test="criterion.noValue">-->
+                  <!--and ${criterion.condition}-->
+                <!--</when>-->
+                <!--<when test="criterion.singleValue">-->
+                  <!--and ${criterion.condition} #{criterion.value}-->
+                <!--</when>-->
+                <!--<when test="criterion.betweenValue">-->
+                  <!--and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}-->
+                <!--</when>-->
+                <!--<when test="criterion.listValue">-->
+                  <!--and ${criterion.condition}-->
+                  <!--<foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">-->
+                    <!--#{listItem}-->
+                  <!--</foreach>-->
+                <!--</when>-->
+              <!--</choose>-->
+            <!--</foreach>-->
+          <!--</trim>-->
+        <!--</if>-->
+      <!--</foreach>-->
+    <!--</where>-->
+  <!--</sql>-->
+  <!--<sql id="Update_By_Example_Where_Clause">-->
+    <!--<where>-->
+      <!--<foreach collection="example.oredCriteria" item="criteria" separator="or">-->
+        <!--<if test="criteria.valid">-->
+          <!--<trim prefix="(" prefixOverrides="and" suffix=")">-->
+            <!--<foreach collection="criteria.criteria" item="criterion">-->
+              <!--<choose>-->
+                <!--<when test="criterion.noValue">-->
+                  <!--and ${criterion.condition}-->
+                <!--</when>-->
+                <!--<when test="criterion.singleValue">-->
+                  <!--and ${criterion.condition} #{criterion.value}-->
+                <!--</when>-->
+                <!--<when test="criterion.betweenValue">-->
+                  <!--and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}-->
+                <!--</when>-->
+                <!--<when test="criterion.listValue">-->
+                  <!--and ${criterion.condition}-->
+                  <!--<foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">-->
+                    <!--#{listItem}-->
+                  <!--</foreach>-->
+                <!--</when>-->
+              <!--</choose>-->
+            <!--</foreach>-->
+          <!--</trim>-->
+        <!--</if>-->
+      <!--</foreach>-->
+    <!--</where>-->
+  <!--</sql>-->
+  <sql id="Base_Column_List">
+    id, email, encrypted_rush_password, encrypted_mail_refresh_token, encrypt_mail_access_token,
+    nickname, company_id, organization_id, birthday, gender, created_at, updated_at,
+    salt, avatar_url, avatar_thumbnail_url, signature, is_register, is_delete, roles,
+    city, interests, company, domain_company, entry, is_freeze, is_active, phone_number
+  </sql>
+  <!--<select id="selectByExample" parameterType="com.pingnotes.pojo.UsersExample" resultMap="BaseResultMap">-->
+    <!--select-->
+    <!--<if test="distinct">-->
+      <!--distinct-->
+    <!--</if>-->
+    <!--<include refid="Base_Column_List" />-->
+    <!--from users-->
+    <!--<if test="_parameter != null">-->
+      <!--<include refid="Example_Where_Clause" />-->
+    <!--</if>-->
+    <!--<if test="orderByClause != null">-->
+      <!--order by ${orderByClause}-->
+    <!--</if>-->
+  <!--</select>-->
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from users
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <!--<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">-->
+    <!--delete from users-->
+    <!--where id = #{id,jdbcType=BIGINT}-->
+  <!--</delete>-->
+  <!--<delete id="deleteByExample" parameterType="com.pingnotes.pojo.UsersExample">-->
+    <!--delete from users-->
+    <!--<if test="_parameter != null">-->
+      <!--<include refid="Example_Where_Clause" />-->
+    <!--</if>-->
+  <!--</delete>-->
+  <!--<insert id="insert" parameterType="com.pingnotes.pojo.Users">-->
+    <!--insert into users (id, email, encrypted_rush_password, -->
+      <!--encrypted_mail_refresh_token, encrypt_mail_access_token, -->
+      <!--nickname, company_id, organization_id, -->
+      <!--birthday, gender, created_at, -->
+      <!--updated_at, salt, avatar_url, -->
+      <!--avatar_thumbnail_url, signature, is_register, -->
+      <!--is_delete, roles, city, -->
+      <!--interests, company, domain_company, -->
+      <!--entry, is_freeze, is_active, -->
+      <!--phone_number)-->
+    <!--values (#{id,jdbcType=BIGINT}, #{email,jdbcType=VARCHAR}, #{encryptedRushPassword,jdbcType=VARCHAR}, -->
+      <!--#{encryptedMailRefreshToken,jdbcType=VARCHAR}, #{encryptMailAccessToken,jdbcType=VARCHAR}, -->
+      <!--#{nickname,jdbcType=VARCHAR}, #{companyId,jdbcType=INTEGER}, #{organizationId,jdbcType=INTEGER}, -->
+      <!--#{birthday,jdbcType=DATE}, #{gender,jdbcType=VARCHAR}, #{createdAt,jdbcType=TIMESTAMP}, -->
+      <!--#{updatedAt,jdbcType=TIMESTAMP}, #{salt,jdbcType=VARCHAR}, #{avatarUrl,jdbcType=VARCHAR}, -->
+      <!--#{avatarThumbnailUrl,jdbcType=VARCHAR}, #{signature,jdbcType=VARCHAR}, #{isRegister,jdbcType=BIT}, -->
+      <!--#{isDelete,jdbcType=BIT}, #{roles,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, -->
+      <!--#{interests,jdbcType=VARCHAR}, #{company,jdbcType=VARCHAR}, #{domainCompany,jdbcType=VARCHAR}, -->
+      <!--#{entry,jdbcType=INTEGER}, #{isFreeze,jdbcType=BIT}, #{isActive,jdbcType=BIT}, -->
+      <!--#{phoneNumber,jdbcType=VARCHAR})-->
+  <!--</insert>-->
+  <!--<insert id="insertSelective" parameterType="com.pingnotes.pojo.Users">-->
+    <!--insert into users-->
+    <!--<trim prefix="(" suffix=")" suffixOverrides=",">-->
+      <!--<if test="id != null">-->
+        <!--id,-->
+      <!--</if>-->
+      <!--<if test="email != null">-->
+        <!--email,-->
+      <!--</if>-->
+      <!--<if test="encryptedRushPassword != null">-->
+        <!--encrypted_rush_password,-->
+      <!--</if>-->
+      <!--<if test="encryptedMailRefreshToken != null">-->
+        <!--encrypted_mail_refresh_token,-->
+      <!--</if>-->
+      <!--<if test="encryptMailAccessToken != null">-->
+        <!--encrypt_mail_access_token,-->
+      <!--</if>-->
+      <!--<if test="nickname != null">-->
+        <!--nickname,-->
+      <!--</if>-->
+      <!--<if test="companyId != null">-->
+        <!--company_id,-->
+      <!--</if>-->
+      <!--<if test="organizationId != null">-->
+        <!--organization_id,-->
+      <!--</if>-->
+      <!--<if test="birthday != null">-->
+        <!--birthday,-->
+      <!--</if>-->
+      <!--<if test="gender != null">-->
+        <!--gender,-->
+      <!--</if>-->
+      <!--<if test="createdAt != null">-->
+        <!--created_at,-->
+      <!--</if>-->
+      <!--<if test="updatedAt != null">-->
+        <!--updated_at,-->
+      <!--</if>-->
+      <!--<if test="salt != null">-->
+        <!--salt,-->
+      <!--</if>-->
+      <!--<if test="avatarUrl != null">-->
+        <!--avatar_url,-->
+      <!--</if>-->
+      <!--<if test="avatarThumbnailUrl != null">-->
+        <!--avatar_thumbnail_url,-->
+      <!--</if>-->
+      <!--<if test="signature != null">-->
+        <!--signature,-->
+      <!--</if>-->
+      <!--<if test="isRegister != null">-->
+        <!--is_register,-->
+      <!--</if>-->
+      <!--<if test="isDelete != null">-->
+        <!--is_delete,-->
+      <!--</if>-->
+      <!--<if test="roles != null">-->
+        <!--roles,-->
+      <!--</if>-->
+      <!--<if test="city != null">-->
+        <!--city,-->
+      <!--</if>-->
+      <!--<if test="interests != null">-->
+        <!--interests,-->
+      <!--</if>-->
+      <!--<if test="company != null">-->
+        <!--company,-->
+      <!--</if>-->
+      <!--<if test="domainCompany != null">-->
+        <!--domain_company,-->
+      <!--</if>-->
+      <!--<if test="entry != null">-->
+        <!--entry,-->
+      <!--</if>-->
+      <!--<if test="isFreeze != null">-->
+        <!--is_freeze,-->
+      <!--</if>-->
+      <!--<if test="isActive != null">-->
+        <!--is_active,-->
+      <!--</if>-->
+      <!--<if test="phoneNumber != null">-->
+        <!--phone_number,-->
+      <!--</if>-->
+    <!--</trim>-->
+    <!--<trim prefix="values (" suffix=")" suffixOverrides=",">-->
+      <!--<if test="id != null">-->
+        <!--#{id,jdbcType=BIGINT},-->
+      <!--</if>-->
+      <!--<if test="email != null">-->
+        <!--#{email,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="encryptedRushPassword != null">-->
+        <!--#{encryptedRushPassword,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="encryptedMailRefreshToken != null">-->
+        <!--#{encryptedMailRefreshToken,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="encryptMailAccessToken != null">-->
+        <!--#{encryptMailAccessToken,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="nickname != null">-->
+        <!--#{nickname,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="companyId != null">-->
+        <!--#{companyId,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <!--<if test="organizationId != null">-->
+        <!--#{organizationId,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <!--<if test="birthday != null">-->
+        <!--#{birthday,jdbcType=DATE},-->
+      <!--</if>-->
+      <!--<if test="gender != null">-->
+        <!--#{gender,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="createdAt != null">-->
+        <!--#{createdAt,jdbcType=TIMESTAMP},-->
+      <!--</if>-->
+      <!--<if test="updatedAt != null">-->
+        <!--#{updatedAt,jdbcType=TIMESTAMP},-->
+      <!--</if>-->
+      <!--<if test="salt != null">-->
+        <!--#{salt,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="avatarUrl != null">-->
+        <!--#{avatarUrl,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="avatarThumbnailUrl != null">-->
+        <!--#{avatarThumbnailUrl,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="signature != null">-->
+        <!--#{signature,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="isRegister != null">-->
+        <!--#{isRegister,jdbcType=BIT},-->
+      <!--</if>-->
+      <!--<if test="isDelete != null">-->
+        <!--#{isDelete,jdbcType=BIT},-->
+      <!--</if>-->
+      <!--<if test="roles != null">-->
+        <!--#{roles,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="city != null">-->
+        <!--#{city,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="interests != null">-->
+        <!--#{interests,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="company != null">-->
+        <!--#{company,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="domainCompany != null">-->
+        <!--#{domainCompany,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="entry != null">-->
+        <!--#{entry,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <!--<if test="isFreeze != null">-->
+        <!--#{isFreeze,jdbcType=BIT},-->
+      <!--</if>-->
+      <!--<if test="isActive != null">-->
+        <!--#{isActive,jdbcType=BIT},-->
+      <!--</if>-->
+      <!--<if test="phoneNumber != null">-->
+        <!--#{phoneNumber,jdbcType=VARCHAR},-->
+      <!--</if>-->
+    <!--</trim>-->
+  <!--</insert>-->
+  <!--<select id="countByExample" parameterType="com.pingnotes.pojo.UsersExample" resultType="java.lang.Long">-->
+    <!--select count(*) from users-->
+    <!--<if test="_parameter != null">-->
+      <!--<include refid="Example_Where_Clause" />-->
+    <!--</if>-->
+  <!--</select>-->
+  <!--<update id="updateByExampleSelective" parameterType="map">-->
+    <!--update users-->
+    <!--<set>-->
+      <!--<if test="record.id != null">-->
+        <!--id = #{record.id,jdbcType=BIGINT},-->
+      <!--</if>-->
+      <!--<if test="record.email != null">-->
+        <!--email = #{record.email,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="record.encryptedRushPassword != null">-->
+        <!--encrypted_rush_password = #{record.encryptedRushPassword,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="record.encryptedMailRefreshToken != null">-->
+        <!--encrypted_mail_refresh_token = #{record.encryptedMailRefreshToken,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="record.encryptMailAccessToken != null">-->
+        <!--encrypt_mail_access_token = #{record.encryptMailAccessToken,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="record.nickname != null">-->
+        <!--nickname = #{record.nickname,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="record.companyId != null">-->
+        <!--company_id = #{record.companyId,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <!--<if test="record.organizationId != null">-->
+        <!--organization_id = #{record.organizationId,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <!--<if test="record.birthday != null">-->
+        <!--birthday = #{record.birthday,jdbcType=DATE},-->
+      <!--</if>-->
+      <!--<if test="record.gender != null">-->
+        <!--gender = #{record.gender,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="record.createdAt != null">-->
+        <!--created_at = #{record.createdAt,jdbcType=TIMESTAMP},-->
+      <!--</if>-->
+      <!--<if test="record.updatedAt != null">-->
+        <!--updated_at = #{record.updatedAt,jdbcType=TIMESTAMP},-->
+      <!--</if>-->
+      <!--<if test="record.salt != null">-->
+        <!--salt = #{record.salt,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="record.avatarUrl != null">-->
+        <!--avatar_url = #{record.avatarUrl,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="record.avatarThumbnailUrl != null">-->
+        <!--avatar_thumbnail_url = #{record.avatarThumbnailUrl,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="record.signature != null">-->
+        <!--signature = #{record.signature,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="record.isRegister != null">-->
+        <!--is_register = #{record.isRegister,jdbcType=BIT},-->
+      <!--</if>-->
+      <!--<if test="record.isDelete != null">-->
+        <!--is_delete = #{record.isDelete,jdbcType=BIT},-->
+      <!--</if>-->
+      <!--<if test="record.roles != null">-->
+        <!--roles = #{record.roles,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="record.city != null">-->
+        <!--city = #{record.city,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="record.interests != null">-->
+        <!--interests = #{record.interests,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="record.company != null">-->
+        <!--company = #{record.company,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="record.domainCompany != null">-->
+        <!--domain_company = #{record.domainCompany,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="record.entry != null">-->
+        <!--entry = #{record.entry,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <!--<if test="record.isFreeze != null">-->
+        <!--is_freeze = #{record.isFreeze,jdbcType=BIT},-->
+      <!--</if>-->
+      <!--<if test="record.isActive != null">-->
+        <!--is_active = #{record.isActive,jdbcType=BIT},-->
+      <!--</if>-->
+      <!--<if test="record.phoneNumber != null">-->
+        <!--phone_number = #{record.phoneNumber,jdbcType=VARCHAR},-->
+      <!--</if>-->
+    <!--</set>-->
+    <!--<if test="_parameter != null">-->
+      <!--<include refid="Update_By_Example_Where_Clause" />-->
+    <!--</if>-->
+  <!--</update>-->
+  <!--<update id="updateByExample" parameterType="map">-->
+    <!--update users-->
+    <!--set id = #{record.id,jdbcType=BIGINT},-->
+      <!--email = #{record.email,jdbcType=VARCHAR},-->
+      <!--encrypted_rush_password = #{record.encryptedRushPassword,jdbcType=VARCHAR},-->
+      <!--encrypted_mail_refresh_token = #{record.encryptedMailRefreshToken,jdbcType=VARCHAR},-->
+      <!--encrypt_mail_access_token = #{record.encryptMailAccessToken,jdbcType=VARCHAR},-->
+      <!--nickname = #{record.nickname,jdbcType=VARCHAR},-->
+      <!--company_id = #{record.companyId,jdbcType=INTEGER},-->
+      <!--organization_id = #{record.organizationId,jdbcType=INTEGER},-->
+      <!--birthday = #{record.birthday,jdbcType=DATE},-->
+      <!--gender = #{record.gender,jdbcType=VARCHAR},-->
+      <!--created_at = #{record.createdAt,jdbcType=TIMESTAMP},-->
+      <!--updated_at = #{record.updatedAt,jdbcType=TIMESTAMP},-->
+      <!--salt = #{record.salt,jdbcType=VARCHAR},-->
+      <!--avatar_url = #{record.avatarUrl,jdbcType=VARCHAR},-->
+      <!--avatar_thumbnail_url = #{record.avatarThumbnailUrl,jdbcType=VARCHAR},-->
+      <!--signature = #{record.signature,jdbcType=VARCHAR},-->
+      <!--is_register = #{record.isRegister,jdbcType=BIT},-->
+      <!--is_delete = #{record.isDelete,jdbcType=BIT},-->
+      <!--roles = #{record.roles,jdbcType=VARCHAR},-->
+      <!--city = #{record.city,jdbcType=VARCHAR},-->
+      <!--interests = #{record.interests,jdbcType=VARCHAR},-->
+      <!--company = #{record.company,jdbcType=VARCHAR},-->
+      <!--domain_company = #{record.domainCompany,jdbcType=VARCHAR},-->
+      <!--entry = #{record.entry,jdbcType=INTEGER},-->
+      <!--is_freeze = #{record.isFreeze,jdbcType=BIT},-->
+      <!--is_active = #{record.isActive,jdbcType=BIT},-->
+      <!--phone_number = #{record.phoneNumber,jdbcType=VARCHAR}-->
+    <!--<if test="_parameter != null">-->
+      <!--<include refid="Update_By_Example_Where_Clause" />-->
+    <!--</if>-->
+  <!--</update>-->
+  <!--<update id="updateByPrimaryKeySelective" parameterType="com.pingnotes.pojo.Users">-->
+    <!--update users-->
+    <!--<set>-->
+      <!--<if test="email != null">-->
+        <!--email = #{email,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="encryptedRushPassword != null">-->
+        <!--encrypted_rush_password = #{encryptedRushPassword,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="encryptedMailRefreshToken != null">-->
+        <!--encrypted_mail_refresh_token = #{encryptedMailRefreshToken,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="encryptMailAccessToken != null">-->
+        <!--encrypt_mail_access_token = #{encryptMailAccessToken,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="nickname != null">-->
+        <!--nickname = #{nickname,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="companyId != null">-->
+        <!--company_id = #{companyId,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <!--<if test="organizationId != null">-->
+        <!--organization_id = #{organizationId,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <!--<if test="birthday != null">-->
+        <!--birthday = #{birthday,jdbcType=DATE},-->
+      <!--</if>-->
+      <!--<if test="gender != null">-->
+        <!--gender = #{gender,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="createdAt != null">-->
+        <!--created_at = #{createdAt,jdbcType=TIMESTAMP},-->
+      <!--</if>-->
+      <!--<if test="updatedAt != null">-->
+        <!--updated_at = #{updatedAt,jdbcType=TIMESTAMP},-->
+      <!--</if>-->
+      <!--<if test="salt != null">-->
+        <!--salt = #{salt,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="avatarUrl != null">-->
+        <!--avatar_url = #{avatarUrl,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="avatarThumbnailUrl != null">-->
+        <!--avatar_thumbnail_url = #{avatarThumbnailUrl,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="signature != null">-->
+        <!--signature = #{signature,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="isRegister != null">-->
+        <!--is_register = #{isRegister,jdbcType=BIT},-->
+      <!--</if>-->
+      <!--<if test="isDelete != null">-->
+        <!--is_delete = #{isDelete,jdbcType=BIT},-->
+      <!--</if>-->
+      <!--<if test="roles != null">-->
+        <!--roles = #{roles,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="city != null">-->
+        <!--city = #{city,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="interests != null">-->
+        <!--interests = #{interests,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="company != null">-->
+        <!--company = #{company,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="domainCompany != null">-->
+        <!--domain_company = #{domainCompany,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="entry != null">-->
+        <!--entry = #{entry,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <!--<if test="isFreeze != null">-->
+        <!--is_freeze = #{isFreeze,jdbcType=BIT},-->
+      <!--</if>-->
+      <!--<if test="isActive != null">-->
+        <!--is_active = #{isActive,jdbcType=BIT},-->
+      <!--</if>-->
+      <!--<if test="phoneNumber != null">-->
+        <!--phone_number = #{phoneNumber,jdbcType=VARCHAR},-->
+      <!--</if>-->
+    <!--</set>-->
+    <!--where id = #{id,jdbcType=BIGINT}-->
+  <!--</update>-->
+  <!--<update id="updateByPrimaryKey" parameterType="com.pingnotes.pojo.Users">-->
+    <!--update users-->
+    <!--set email = #{email,jdbcType=VARCHAR},-->
+      <!--encrypted_rush_password = #{encryptedRushPassword,jdbcType=VARCHAR},-->
+      <!--encrypted_mail_refresh_token = #{encryptedMailRefreshToken,jdbcType=VARCHAR},-->
+      <!--encrypt_mail_access_token = #{encryptMailAccessToken,jdbcType=VARCHAR},-->
+      <!--nickname = #{nickname,jdbcType=VARCHAR},-->
+      <!--company_id = #{companyId,jdbcType=INTEGER},-->
+      <!--organization_id = #{organizationId,jdbcType=INTEGER},-->
+      <!--birthday = #{birthday,jdbcType=DATE},-->
+      <!--gender = #{gender,jdbcType=VARCHAR},-->
+      <!--created_at = #{createdAt,jdbcType=TIMESTAMP},-->
+      <!--updated_at = #{updatedAt,jdbcType=TIMESTAMP},-->
+      <!--salt = #{salt,jdbcType=VARCHAR},-->
+      <!--avatar_url = #{avatarUrl,jdbcType=VARCHAR},-->
+      <!--avatar_thumbnail_url = #{avatarThumbnailUrl,jdbcType=VARCHAR},-->
+      <!--signature = #{signature,jdbcType=VARCHAR},-->
+      <!--is_register = #{isRegister,jdbcType=BIT},-->
+      <!--is_delete = #{isDelete,jdbcType=BIT},-->
+      <!--roles = #{roles,jdbcType=VARCHAR},-->
+      <!--city = #{city,jdbcType=VARCHAR},-->
+      <!--interests = #{interests,jdbcType=VARCHAR},-->
+      <!--company = #{company,jdbcType=VARCHAR},-->
+      <!--domain_company = #{domainCompany,jdbcType=VARCHAR},-->
+      <!--entry = #{entry,jdbcType=INTEGER},-->
+      <!--is_freeze = #{isFreeze,jdbcType=BIT},-->
+      <!--is_active = #{isActive,jdbcType=BIT},-->
+      <!--phone_number = #{phoneNumber,jdbcType=VARCHAR}-->
+    <!--where id = #{id,jdbcType=BIGINT}-->
+  <!--</update>-->
+  <!--<resultMap id="BaseResultMap" type="com.pingnotes.pojo.Users">-->
+    <!--<id column="id" jdbcType="BIGINT" property="id" />-->
+    <!--<result column="email" jdbcType="VARCHAR" property="email" />-->
+    <!--<result column="encrypted_rush_password" jdbcType="VARCHAR" property="encryptedRushPassword" />-->
+    <!--<result column="encrypted_mail_refresh_token" jdbcType="VARCHAR" property="encryptedMailRefreshToken" />-->
+    <!--<result column="encrypt_mail_access_token" jdbcType="VARCHAR" property="encryptMailAccessToken" />-->
+    <!--<result column="nickname" jdbcType="VARCHAR" property="nickname" />-->
+    <!--<result column="company_id" jdbcType="INTEGER" property="companyId" />-->
+    <!--<result column="organization_id" jdbcType="INTEGER" property="organizationId" />-->
+    <!--<result column="birthday" jdbcType="DATE" property="birthday" />-->
+    <!--<result column="gender" jdbcType="VARCHAR" property="gender" />-->
+    <!--<result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />-->
+    <!--<result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />-->
+    <!--<result column="salt" jdbcType="VARCHAR" property="salt" />-->
+    <!--<result column="avatar_url" jdbcType="VARCHAR" property="avatarUrl" />-->
+    <!--<result column="avatar_thumbnail_url" jdbcType="VARCHAR" property="avatarThumbnailUrl" />-->
+    <!--<result column="signature" jdbcType="VARCHAR" property="signature" />-->
+    <!--<result column="is_register" jdbcType="BIT" property="isRegister" />-->
+    <!--<result column="is_delete" jdbcType="BIT" property="isDelete" />-->
+    <!--<result column="roles" jdbcType="VARCHAR" property="roles" />-->
+    <!--<result column="city" jdbcType="VARCHAR" property="city" />-->
+    <!--<result column="interests" jdbcType="VARCHAR" property="interests" />-->
+    <!--<result column="company" jdbcType="VARCHAR" property="company" />-->
+    <!--<result column="domain_company" jdbcType="VARCHAR" property="domainCompany" />-->
+    <!--<result column="entry" jdbcType="INTEGER" property="entry" />-->
+    <!--<result column="is_freeze" jdbcType="BIT" property="isFreeze" />-->
+    <!--<result column="is_active" jdbcType="BIT" property="isActive" />-->
+    <!--<result column="phone_number" jdbcType="VARCHAR" property="phoneNumber" />-->
+  <!--</resultMap>-->
+  <!--<sql id="Example_Where_Clause">-->
+    <!--<where>-->
+      <!--<foreach collection="oredCriteria" item="criteria" separator="or">-->
+        <!--<if test="criteria.valid">-->
+          <!--<trim prefix="(" prefixOverrides="and" suffix=")">-->
+            <!--<foreach collection="criteria.criteria" item="criterion">-->
+              <!--<choose>-->
+                <!--<when test="criterion.noValue">-->
+                  <!--and ${criterion.condition}-->
+                <!--</when>-->
+                <!--<when test="criterion.singleValue">-->
+                  <!--and ${criterion.condition} #{criterion.value}-->
+                <!--</when>-->
+                <!--<when test="criterion.betweenValue">-->
+                  <!--and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}-->
+                <!--</when>-->
+                <!--<when test="criterion.listValue">-->
+                  <!--and ${criterion.condition}-->
+                  <!--<foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">-->
+                    <!--#{listItem}-->
+                  <!--</foreach>-->
+                <!--</when>-->
+              <!--</choose>-->
+            <!--</foreach>-->
+          <!--</trim>-->
+        <!--</if>-->
+      <!--</foreach>-->
+    <!--</where>-->
+  <!--</sql>-->
+  <!--<sql id="Update_By_Example_Where_Clause">-->
+    <!--<where>-->
+      <!--<foreach collection="example.oredCriteria" item="criteria" separator="or">-->
+        <!--<if test="criteria.valid">-->
+          <!--<trim prefix="(" prefixOverrides="and" suffix=")">-->
+            <!--<foreach collection="criteria.criteria" item="criterion">-->
+              <!--<choose>-->
+                <!--<when test="criterion.noValue">-->
+                  <!--and ${criterion.condition}-->
+                <!--</when>-->
+                <!--<when test="criterion.singleValue">-->
+                  <!--and ${criterion.condition} #{criterion.value}-->
+                <!--</when>-->
+                <!--<when test="criterion.betweenValue">-->
+                  <!--and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}-->
+                <!--</when>-->
+                <!--<when test="criterion.listValue">-->
+                  <!--and ${criterion.condition}-->
+                  <!--<foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">-->
+                    <!--#{listItem}-->
+                  <!--</foreach>-->
+                <!--</when>-->
+              <!--</choose>-->
+            <!--</foreach>-->
+          <!--</trim>-->
+        <!--</if>-->
+      <!--</foreach>-->
+    <!--</where>-->
+  <!--</sql>-->
+  <!--<sql id="Base_Column_List">-->
+    <!--id, email, encrypted_rush_password, encrypted_mail_refresh_token, encrypt_mail_access_token, -->
+    <!--nickname, company_id, organization_id, birthday, gender, created_at, updated_at, -->
+    <!--salt, avatar_url, avatar_thumbnail_url, signature, is_register, is_delete, roles, -->
+    <!--city, interests, company, domain_company, entry, is_freeze, is_active, phone_number-->
+  <!--</sql>-->
+  <!--<select id="selectByExample" parameterType="com.pingnotes.pojo.UsersExample" resultMap="BaseResultMap">-->
+    <!--select-->
+    <!--<if test="distinct">-->
+      <!--distinct-->
+    <!--</if>-->
+    <!--<include refid="Base_Column_List" />-->
+    <!--from users-->
+    <!--<if test="_parameter != null">-->
+      <!--<include refid="Example_Where_Clause" />-->
+    <!--</if>-->
+    <!--<if test="orderByClause != null">-->
+      <!--order by ${orderByClause}-->
+    <!--</if>-->
+  <!--</select>-->
+  <!--<select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">-->
+    <!--select -->
+    <!--<include refid="Base_Column_List" />-->
+    <!--from users-->
+    <!--where id = #{id,jdbcType=BIGINT}-->
+  <!--</select>-->
+  <!--<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">-->
+    <!--delete from users-->
+    <!--where id = #{id,jdbcType=BIGINT}-->
+  <!--</delete>-->
+  <!--<delete id="deleteByExample" parameterType="com.pingnotes.pojo.UsersExample">-->
+    <!--delete from users-->
+    <!--<if test="_parameter != null">-->
+      <!--<include refid="Example_Where_Clause" />-->
+    <!--</if>-->
+  <!--</delete>-->
+  <!--<insert id="insert" parameterType="com.pingnotes.pojo.Users">-->
+    <!--insert into users (id, email, encrypted_rush_password, -->
+      <!--encrypted_mail_refresh_token, encrypt_mail_access_token, -->
+      <!--nickname, company_id, organization_id, -->
+      <!--birthday, gender, created_at, -->
+      <!--updated_at, salt, avatar_url, -->
+      <!--avatar_thumbnail_url, signature, is_register, -->
+      <!--is_delete, roles, city, -->
+      <!--interests, company, domain_company, -->
+      <!--entry, is_freeze, is_active, -->
+      <!--phone_number)-->
+    <!--values (#{id,jdbcType=BIGINT}, #{email,jdbcType=VARCHAR}, #{encryptedRushPassword,jdbcType=VARCHAR}, -->
+      <!--#{encryptedMailRefreshToken,jdbcType=VARCHAR}, #{encryptMailAccessToken,jdbcType=VARCHAR}, -->
+      <!--#{nickname,jdbcType=VARCHAR}, #{companyId,jdbcType=INTEGER}, #{organizationId,jdbcType=INTEGER}, -->
+      <!--#{birthday,jdbcType=DATE}, #{gender,jdbcType=VARCHAR}, #{createdAt,jdbcType=TIMESTAMP}, -->
+      <!--#{updatedAt,jdbcType=TIMESTAMP}, #{salt,jdbcType=VARCHAR}, #{avatarUrl,jdbcType=VARCHAR}, -->
+      <!--#{avatarThumbnailUrl,jdbcType=VARCHAR}, #{signature,jdbcType=VARCHAR}, #{isRegister,jdbcType=BIT}, -->
+      <!--#{isDelete,jdbcType=BIT}, #{roles,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, -->
+      <!--#{interests,jdbcType=VARCHAR}, #{company,jdbcType=VARCHAR}, #{domainCompany,jdbcType=VARCHAR}, -->
+      <!--#{entry,jdbcType=INTEGER}, #{isFreeze,jdbcType=BIT}, #{isActive,jdbcType=BIT}, -->
+      <!--#{phoneNumber,jdbcType=VARCHAR})-->
+  <!--</insert>-->
+  <!--<insert id="insertSelective" parameterType="com.pingnotes.pojo.Users">-->
+    <!--insert into users-->
+    <!--<trim prefix="(" suffix=")" suffixOverrides=",">-->
+      <!--<if test="id != null">-->
+        <!--id,-->
+      <!--</if>-->
+      <!--<if test="email != null">-->
+        <!--email,-->
+      <!--</if>-->
+      <!--<if test="encryptedRushPassword != null">-->
+        <!--encrypted_rush_password,-->
+      <!--</if>-->
+      <!--<if test="encryptedMailRefreshToken != null">-->
+        <!--encrypted_mail_refresh_token,-->
+      <!--</if>-->
+      <!--<if test="encryptMailAccessToken != null">-->
+        <!--encrypt_mail_access_token,-->
+      <!--</if>-->
+      <!--<if test="nickname != null">-->
+        <!--nickname,-->
+      <!--</if>-->
+      <!--<if test="companyId != null">-->
+        <!--company_id,-->
+      <!--</if>-->
+      <!--<if test="organizationId != null">-->
+        <!--organization_id,-->
+      <!--</if>-->
+      <!--<if test="birthday != null">-->
+        <!--birthday,-->
+      <!--</if>-->
+      <!--<if test="gender != null">-->
+        <!--gender,-->
+      <!--</if>-->
+      <!--<if test="createdAt != null">-->
+        <!--created_at,-->
+      <!--</if>-->
+      <!--<if test="updatedAt != null">-->
+        <!--updated_at,-->
+      <!--</if>-->
+      <!--<if test="salt != null">-->
+        <!--salt,-->
+      <!--</if>-->
+      <!--<if test="avatarUrl != null">-->
+        <!--avatar_url,-->
+      <!--</if>-->
+      <!--<if test="avatarThumbnailUrl != null">-->
+        <!--avatar_thumbnail_url,-->
+      <!--</if>-->
+      <!--<if test="signature != null">-->
+        <!--signature,-->
+      <!--</if>-->
+      <!--<if test="isRegister != null">-->
+        <!--is_register,-->
+      <!--</if>-->
+      <!--<if test="isDelete != null">-->
+        <!--is_delete,-->
+      <!--</if>-->
+      <!--<if test="roles != null">-->
+        <!--roles,-->
+      <!--</if>-->
+      <!--<if test="city != null">-->
+        <!--city,-->
+      <!--</if>-->
+      <!--<if test="interests != null">-->
+        <!--interests,-->
+      <!--</if>-->
+      <!--<if test="company != null">-->
+        <!--company,-->
+      <!--</if>-->
+      <!--<if test="domainCompany != null">-->
+        <!--domain_company,-->
+      <!--</if>-->
+      <!--<if test="entry != null">-->
+        <!--entry,-->
+      <!--</if>-->
+      <!--<if test="isFreeze != null">-->
+        <!--is_freeze,-->
+      <!--</if>-->
+      <!--<if test="isActive != null">-->
+        <!--is_active,-->
+      <!--</if>-->
+      <!--<if test="phoneNumber != null">-->
+        <!--phone_number,-->
+      <!--</if>-->
+    <!--</trim>-->
+    <!--<trim prefix="values (" suffix=")" suffixOverrides=",">-->
+      <!--<if test="id != null">-->
+        <!--#{id,jdbcType=BIGINT},-->
+      <!--</if>-->
+      <!--<if test="email != null">-->
+        <!--#{email,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="encryptedRushPassword != null">-->
+        <!--#{encryptedRushPassword,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="encryptedMailRefreshToken != null">-->
+        <!--#{encryptedMailRefreshToken,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="encryptMailAccessToken != null">-->
+        <!--#{encryptMailAccessToken,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="nickname != null">-->
+        <!--#{nickname,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="companyId != null">-->
+        <!--#{companyId,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <!--<if test="organizationId != null">-->
+        <!--#{organizationId,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <!--<if test="birthday != null">-->
+        <!--#{birthday,jdbcType=DATE},-->
+      <!--</if>-->
+      <!--<if test="gender != null">-->
+        <!--#{gender,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="createdAt != null">-->
+        <!--#{createdAt,jdbcType=TIMESTAMP},-->
+      <!--</if>-->
+      <!--<if test="updatedAt != null">-->
+        <!--#{updatedAt,jdbcType=TIMESTAMP},-->
+      <!--</if>-->
+      <!--<if test="salt != null">-->
+        <!--#{salt,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="avatarUrl != null">-->
+        <!--#{avatarUrl,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="avatarThumbnailUrl != null">-->
+        <!--#{avatarThumbnailUrl,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="signature != null">-->
+        <!--#{signature,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="isRegister != null">-->
+        <!--#{isRegister,jdbcType=BIT},-->
+      <!--</if>-->
+      <!--<if test="isDelete != null">-->
+        <!--#{isDelete,jdbcType=BIT},-->
+      <!--</if>-->
+      <!--<if test="roles != null">-->
+        <!--#{roles,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="city != null">-->
+        <!--#{city,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="interests != null">-->
+        <!--#{interests,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="company != null">-->
+        <!--#{company,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="domainCompany != null">-->
+        <!--#{domainCompany,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="entry != null">-->
+        <!--#{entry,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <!--<if test="isFreeze != null">-->
+        <!--#{isFreeze,jdbcType=BIT},-->
+      <!--</if>-->
+      <!--<if test="isActive != null">-->
+        <!--#{isActive,jdbcType=BIT},-->
+      <!--</if>-->
+      <!--<if test="phoneNumber != null">-->
+        <!--#{phoneNumber,jdbcType=VARCHAR},-->
+      <!--</if>-->
+    <!--</trim>-->
+  <!--</insert>-->
+  <!--<select id="countByExample" parameterType="com.pingnotes.pojo.UsersExample" resultType="java.lang.Long">-->
+    <!--select count(*) from users-->
+    <!--<if test="_parameter != null">-->
+      <!--<include refid="Example_Where_Clause" />-->
+    <!--</if>-->
+  <!--</select>-->
+  <!--<update id="updateByExampleSelective" parameterType="map">-->
+    <!--update users-->
+    <!--<set>-->
+      <!--<if test="record.id != null">-->
+        <!--id = #{record.id,jdbcType=BIGINT},-->
+      <!--</if>-->
+      <!--<if test="record.email != null">-->
+        <!--email = #{record.email,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="record.encryptedRushPassword != null">-->
+        <!--encrypted_rush_password = #{record.encryptedRushPassword,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="record.encryptedMailRefreshToken != null">-->
+        <!--encrypted_mail_refresh_token = #{record.encryptedMailRefreshToken,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="record.encryptMailAccessToken != null">-->
+        <!--encrypt_mail_access_token = #{record.encryptMailAccessToken,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="record.nickname != null">-->
+        <!--nickname = #{record.nickname,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="record.companyId != null">-->
+        <!--company_id = #{record.companyId,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <!--<if test="record.organizationId != null">-->
+        <!--organization_id = #{record.organizationId,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <!--<if test="record.birthday != null">-->
+        <!--birthday = #{record.birthday,jdbcType=DATE},-->
+      <!--</if>-->
+      <!--<if test="record.gender != null">-->
+        <!--gender = #{record.gender,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="record.createdAt != null">-->
+        <!--created_at = #{record.createdAt,jdbcType=TIMESTAMP},-->
+      <!--</if>-->
+      <!--<if test="record.updatedAt != null">-->
+        <!--updated_at = #{record.updatedAt,jdbcType=TIMESTAMP},-->
+      <!--</if>-->
+      <!--<if test="record.salt != null">-->
+        <!--salt = #{record.salt,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="record.avatarUrl != null">-->
+        <!--avatar_url = #{record.avatarUrl,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="record.avatarThumbnailUrl != null">-->
+        <!--avatar_thumbnail_url = #{record.avatarThumbnailUrl,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="record.signature != null">-->
+        <!--signature = #{record.signature,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="record.isRegister != null">-->
+        <!--is_register = #{record.isRegister,jdbcType=BIT},-->
+      <!--</if>-->
+      <!--<if test="record.isDelete != null">-->
+        <!--is_delete = #{record.isDelete,jdbcType=BIT},-->
+      <!--</if>-->
+      <!--<if test="record.roles != null">-->
+        <!--roles = #{record.roles,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="record.city != null">-->
+        <!--city = #{record.city,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="record.interests != null">-->
+        <!--interests = #{record.interests,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="record.company != null">-->
+        <!--company = #{record.company,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="record.domainCompany != null">-->
+        <!--domain_company = #{record.domainCompany,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="record.entry != null">-->
+        <!--entry = #{record.entry,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <!--<if test="record.isFreeze != null">-->
+        <!--is_freeze = #{record.isFreeze,jdbcType=BIT},-->
+      <!--</if>-->
+      <!--<if test="record.isActive != null">-->
+        <!--is_active = #{record.isActive,jdbcType=BIT},-->
+      <!--</if>-->
+      <!--<if test="record.phoneNumber != null">-->
+        <!--phone_number = #{record.phoneNumber,jdbcType=VARCHAR},-->
+      <!--</if>-->
+    <!--</set>-->
+    <!--<if test="_parameter != null">-->
+      <!--<include refid="Update_By_Example_Where_Clause" />-->
+    <!--</if>-->
+  <!--</update>-->
+  <!--<update id="updateByExample" parameterType="map">-->
+    <!--update users-->
+    <!--set id = #{record.id,jdbcType=BIGINT},-->
+      <!--email = #{record.email,jdbcType=VARCHAR},-->
+      <!--encrypted_rush_password = #{record.encryptedRushPassword,jdbcType=VARCHAR},-->
+      <!--encrypted_mail_refresh_token = #{record.encryptedMailRefreshToken,jdbcType=VARCHAR},-->
+      <!--encrypt_mail_access_token = #{record.encryptMailAccessToken,jdbcType=VARCHAR},-->
+      <!--nickname = #{record.nickname,jdbcType=VARCHAR},-->
+      <!--company_id = #{record.companyId,jdbcType=INTEGER},-->
+      <!--organization_id = #{record.organizationId,jdbcType=INTEGER},-->
+      <!--birthday = #{record.birthday,jdbcType=DATE},-->
+      <!--gender = #{record.gender,jdbcType=VARCHAR},-->
+      <!--created_at = #{record.createdAt,jdbcType=TIMESTAMP},-->
+      <!--updated_at = #{record.updatedAt,jdbcType=TIMESTAMP},-->
+      <!--salt = #{record.salt,jdbcType=VARCHAR},-->
+      <!--avatar_url = #{record.avatarUrl,jdbcType=VARCHAR},-->
+      <!--avatar_thumbnail_url = #{record.avatarThumbnailUrl,jdbcType=VARCHAR},-->
+      <!--signature = #{record.signature,jdbcType=VARCHAR},-->
+      <!--is_register = #{record.isRegister,jdbcType=BIT},-->
+      <!--is_delete = #{record.isDelete,jdbcType=BIT},-->
+      <!--roles = #{record.roles,jdbcType=VARCHAR},-->
+      <!--city = #{record.city,jdbcType=VARCHAR},-->
+      <!--interests = #{record.interests,jdbcType=VARCHAR},-->
+      <!--company = #{record.company,jdbcType=VARCHAR},-->
+      <!--domain_company = #{record.domainCompany,jdbcType=VARCHAR},-->
+      <!--entry = #{record.entry,jdbcType=INTEGER},-->
+      <!--is_freeze = #{record.isFreeze,jdbcType=BIT},-->
+      <!--is_active = #{record.isActive,jdbcType=BIT},-->
+      <!--phone_number = #{record.phoneNumber,jdbcType=VARCHAR}-->
+    <!--<if test="_parameter != null">-->
+      <!--<include refid="Update_By_Example_Where_Clause" />-->
+    <!--</if>-->
+  <!--</update>-->
+  <!--<update id="updateByPrimaryKeySelective" parameterType="com.pingnotes.pojo.Users">-->
+    <!--update users-->
+    <!--<set>-->
+      <!--<if test="email != null">-->
+        <!--email = #{email,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="encryptedRushPassword != null">-->
+        <!--encrypted_rush_password = #{encryptedRushPassword,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="encryptedMailRefreshToken != null">-->
+        <!--encrypted_mail_refresh_token = #{encryptedMailRefreshToken,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="encryptMailAccessToken != null">-->
+        <!--encrypt_mail_access_token = #{encryptMailAccessToken,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="nickname != null">-->
+        <!--nickname = #{nickname,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="companyId != null">-->
+        <!--company_id = #{companyId,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <!--<if test="organizationId != null">-->
+        <!--organization_id = #{organizationId,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <!--<if test="birthday != null">-->
+        <!--birthday = #{birthday,jdbcType=DATE},-->
+      <!--</if>-->
+      <!--<if test="gender != null">-->
+        <!--gender = #{gender,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="createdAt != null">-->
+        <!--created_at = #{createdAt,jdbcType=TIMESTAMP},-->
+      <!--</if>-->
+      <!--<if test="updatedAt != null">-->
+        <!--updated_at = #{updatedAt,jdbcType=TIMESTAMP},-->
+      <!--</if>-->
+      <!--<if test="salt != null">-->
+        <!--salt = #{salt,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="avatarUrl != null">-->
+        <!--avatar_url = #{avatarUrl,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="avatarThumbnailUrl != null">-->
+        <!--avatar_thumbnail_url = #{avatarThumbnailUrl,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="signature != null">-->
+        <!--signature = #{signature,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="isRegister != null">-->
+        <!--is_register = #{isRegister,jdbcType=BIT},-->
+      <!--</if>-->
+      <!--<if test="isDelete != null">-->
+        <!--is_delete = #{isDelete,jdbcType=BIT},-->
+      <!--</if>-->
+      <!--<if test="roles != null">-->
+        <!--roles = #{roles,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="city != null">-->
+        <!--city = #{city,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="interests != null">-->
+        <!--interests = #{interests,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="company != null">-->
+        <!--company = #{company,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="domainCompany != null">-->
+        <!--domain_company = #{domainCompany,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="entry != null">-->
+        <!--entry = #{entry,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <!--<if test="isFreeze != null">-->
+        <!--is_freeze = #{isFreeze,jdbcType=BIT},-->
+      <!--</if>-->
+      <!--<if test="isActive != null">-->
+        <!--is_active = #{isActive,jdbcType=BIT},-->
+      <!--</if>-->
+      <!--<if test="phoneNumber != null">-->
+        <!--phone_number = #{phoneNumber,jdbcType=VARCHAR},-->
+      <!--</if>-->
+    <!--</set>-->
+    <!--where id = #{id,jdbcType=BIGINT}-->
+  <!--</update>-->
+  <!--<update id="updateByPrimaryKey" parameterType="com.pingnotes.pojo.Users">-->
+    <!--update users-->
+    <!--set email = #{email,jdbcType=VARCHAR},-->
+      <!--encrypted_rush_password = #{encryptedRushPassword,jdbcType=VARCHAR},-->
+      <!--encrypted_mail_refresh_token = #{encryptedMailRefreshToken,jdbcType=VARCHAR},-->
+      <!--encrypt_mail_access_token = #{encryptMailAccessToken,jdbcType=VARCHAR},-->
+      <!--nickname = #{nickname,jdbcType=VARCHAR},-->
+      <!--company_id = #{companyId,jdbcType=INTEGER},-->
+      <!--organization_id = #{organizationId,jdbcType=INTEGER},-->
+      <!--birthday = #{birthday,jdbcType=DATE},-->
+      <!--gender = #{gender,jdbcType=VARCHAR},-->
+      <!--created_at = #{createdAt,jdbcType=TIMESTAMP},-->
+      <!--updated_at = #{updatedAt,jdbcType=TIMESTAMP},-->
+      <!--salt = #{salt,jdbcType=VARCHAR},-->
+      <!--avatar_url = #{avatarUrl,jdbcType=VARCHAR},-->
+      <!--avatar_thumbnail_url = #{avatarThumbnailUrl,jdbcType=VARCHAR},-->
+      <!--signature = #{signature,jdbcType=VARCHAR},-->
+      <!--is_register = #{isRegister,jdbcType=BIT},-->
+      <!--is_delete = #{isDelete,jdbcType=BIT},-->
+      <!--roles = #{roles,jdbcType=VARCHAR},-->
+      <!--city = #{city,jdbcType=VARCHAR},-->
+      <!--interests = #{interests,jdbcType=VARCHAR},-->
+      <!--company = #{company,jdbcType=VARCHAR},-->
+      <!--domain_company = #{domainCompany,jdbcType=VARCHAR},-->
+      <!--entry = #{entry,jdbcType=INTEGER},-->
+      <!--is_freeze = #{isFreeze,jdbcType=BIT},-->
+      <!--is_active = #{isActive,jdbcType=BIT},-->
+      <!--phone_number = #{phoneNumber,jdbcType=VARCHAR}-->
+    <!--where id = #{id,jdbcType=BIGINT}-->
+  <!--</update>-->
+</mapper>
