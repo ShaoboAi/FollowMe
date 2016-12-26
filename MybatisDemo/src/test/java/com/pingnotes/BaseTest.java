@@ -13,5 +13,9 @@ public class BaseTest {
     @Before
     public void before(){
         ctx = new AnnotationConfigApplicationContext("com.pingnotes");
+
+        for (String name : ctx.getBeanDefinitionNames()){
+            System.out.println("name : " + name);
+        }
     }
 }
