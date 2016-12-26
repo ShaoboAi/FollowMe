@@ -527,36 +527,36 @@
     <!--</set>-->
     <!--where id = #{id,jdbcType=BIGINT}-->
   <!--</update>-->
-  <!--<update id="updateByPrimaryKey" parameterType="com.pingnotes.pojo.Users">-->
-    <!--update users-->
-    <!--set email = #{email,jdbcType=VARCHAR},-->
-      <!--encrypted_rush_password = #{encryptedRushPassword,jdbcType=VARCHAR},-->
-      <!--encrypted_mail_refresh_token = #{encryptedMailRefreshToken,jdbcType=VARCHAR},-->
-      <!--encrypt_mail_access_token = #{encryptMailAccessToken,jdbcType=VARCHAR},-->
-      <!--nickname = #{nickname,jdbcType=VARCHAR},-->
-      <!--company_id = #{companyId,jdbcType=INTEGER},-->
-      <!--organization_id = #{organizationId,jdbcType=INTEGER},-->
-      <!--birthday = #{birthday,jdbcType=DATE},-->
-      <!--gender = #{gender,jdbcType=VARCHAR},-->
-      <!--created_at = #{createdAt,jdbcType=TIMESTAMP},-->
-      <!--updated_at = #{updatedAt,jdbcType=TIMESTAMP},-->
-      <!--salt = #{salt,jdbcType=VARCHAR},-->
-      <!--avatar_url = #{avatarUrl,jdbcType=VARCHAR},-->
-      <!--avatar_thumbnail_url = #{avatarThumbnailUrl,jdbcType=VARCHAR},-->
-      <!--signature = #{signature,jdbcType=VARCHAR},-->
-      <!--is_register = #{isRegister,jdbcType=BIT},-->
-      <!--is_delete = #{isDelete,jdbcType=BIT},-->
-      <!--roles = #{roles,jdbcType=VARCHAR},-->
-      <!--city = #{city,jdbcType=VARCHAR},-->
-      <!--interests = #{interests,jdbcType=VARCHAR},-->
-      <!--company = #{company,jdbcType=VARCHAR},-->
-      <!--domain_company = #{domainCompany,jdbcType=VARCHAR},-->
-      <!--entry = #{entry,jdbcType=INTEGER},-->
-      <!--is_freeze = #{isFreeze,jdbcType=BIT},-->
-      <!--is_active = #{isActive,jdbcType=BIT},-->
-      <!--phone_number = #{phoneNumber,jdbcType=VARCHAR}-->
-    <!--where id = #{id,jdbcType=BIGINT}-->
-  <!--</update>-->
+  <update id="updateByPrimaryKey" parameterType="com.pingnotes.pojo.Users">
+    update users
+    set email = #{email,jdbcType=VARCHAR},
+      encrypted_rush_password = #{encryptedRushPassword,jdbcType=VARCHAR},
+      encrypted_mail_refresh_token = #{encryptedMailRefreshToken,jdbcType=VARCHAR},
+      encrypt_mail_access_token = #{encryptMailAccessToken,jdbcType=VARCHAR},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=INTEGER},
+      organization_id = #{organizationId,jdbcType=INTEGER},
+      birthday = #{birthday,jdbcType=DATE},
+      gender = #{gender,jdbcType=VARCHAR},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      salt = #{salt,jdbcType=VARCHAR},
+      avatar_url = #{avatarUrl,jdbcType=VARCHAR},
+      avatar_thumbnail_url = #{avatarThumbnailUrl,jdbcType=VARCHAR},
+      signature = #{signature,jdbcType=VARCHAR},
+      is_register = #{isRegister,jdbcType=BIT},
+      is_delete = #{isDelete,jdbcType=BIT},
+      roles = #{roles,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      interests = #{interests,jdbcType=VARCHAR},
+      company = #{company,jdbcType=VARCHAR},
+      domain_company = #{domainCompany,jdbcType=VARCHAR},
+      entry = #{entry,jdbcType=INTEGER},
+      is_freeze = #{isFreeze,jdbcType=BIT},
+      is_active = #{isActive,jdbcType=BIT},
+      phone_number = #{phoneNumber,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
   <!--<resultMap id="BaseResultMap" type="com.pingnotes.pojo.Users">-->
     <!--<id column="id" jdbcType="BIGINT" property="id" />-->
     <!--<result column="email" jdbcType="VARCHAR" property="email" />-->

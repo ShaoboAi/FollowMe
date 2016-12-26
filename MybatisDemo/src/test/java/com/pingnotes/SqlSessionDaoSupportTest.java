@@ -1,7 +1,7 @@
 package com.pingnotes;
 
 import com.pingnotes.pojo.Users;
-import com.pingnotes.service.UserDaoImpl;
+import com.pingnotes.service.UserServiceImpl;
 import org.junit.Test;
 
 /**
@@ -11,8 +11,6 @@ public class SqlSessionDaoSupportTest extends BaseTest {
 
     @Test
     public void t() {
-        UserDaoImpl userDao = ctx.getBean("userDao", UserDaoImpl.class);
-        Users u = userDao.foo(23l);
-        System.out.println(u.getEmail());
+
     }
 }
